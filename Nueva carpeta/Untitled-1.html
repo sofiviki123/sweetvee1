@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetVee</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+
+        #inicio {
+            height: 100vh;
+            background: linear-gradient(rgba(255, 182, 193, 0.6), rgba(255, 228, 225, 0.8)), 
+                        url('https://images.unsplash.com/photo-1517685352821-92cf88aee5a5?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        #inicio h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+        }
+
+        #inicio p {
+            font-size: 1.5rem;
+            max-width: 600px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+
+        .menu {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+
+        .menu button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .menu-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 100;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .menu-content a {
+            display: block;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .menu-content a:hover {
+            background-color: #ffb6c1;
+        }
+
+        .show {
+            display: block;
+        }
+
+        #recetas {
+            min-height: 100vh;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(to bottom right, #ffc1cc, #ffe4e1);
+            color: #333;
+            text-align: center;
+        }
+
+        .recetas-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .receta {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            width: 250px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            text-align: left;
+        }
+
+        .receta:hover {
+            transform: scale(1.05);
+        }
+
+        .receta h3 {
+            color: #ff69b4;
+            margin-bottom: 10px;
+        }
+
+        .detalle {
+            display: none;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .receta.open .detalle {
+            display: block;
+        }
+
+
+        #contacto {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: linear-gradient(to bottom right, #ffc1cc, #ffe4e1);
+            color: #333;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="menu">
+        <button onclick="toggleMenu()">Menú ▼</button>
+        <div id="dropdown" class="menu-content">
+            <a href="#inicio">Inicio</a>
+            <a href="#recetas">Recetas</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+    </div>
+
+    <section id="inicio">
+        <h1>SweetVee</h1>
+        <p>Recetas dulces que endulzan tu día</p>
+    </section>
+
+    <section id="recetas">
+        <h2>Recetas</h2>
+        <p>¡Hacé click en una receta para ver cómo se hace! 🍰</p>
+
+        <div class="recetas-container">
+            <div class="receta">
+                <h3>Cheesecake de frutilla</h3>
+                <div class="detalle">
+                    <p><strong>1.</strong> Para la base: procesar las galletas luego agregar la manteca previamente diluida en el microondas por 30 segundos. Mezclar hasta que las galletas queden húmedas. Este preparado ponerlo en la base de un molde redondo de 24 cm de diámetro (desmontable forrado con papel manteca) Reservar.</p>
+                    <p><strong>2.</strong> En un bol batir la crema de leche con el azúcar luego agregar el queso crema y las frutillas previamente procesadas, (reservar un poco para decorar) mover en forma envolvente, por último agregar la gelatina sin sabor previamente hidratada en agua y luego disuelta en microondas por 15 ó 20 segundos.</p>
+                    <p><strong>3.</strong> Decorar con frutillas todo el contorno del molde luego agregar todo el contenido cremoso del segundo paso. Refrigerar por 30'.</p>
+                    <p><strong>4.</strong> Pasados los 30' sacar de la heladera y agregar la gelatina de frutillas previamente diluida en una taza de agua caliente.</p>
+                    <p><strong>5.</strong> Llevar a la heladera hasta el día siguiente. Es recomendable usar un molde desmontable para que sea más fácil desmoldar.</p>
+                </div>
+            </div>
+
+            <div class="receta">
+                <h3>Brownie clasico</h3>
+                <div class="detalle">
+                    <p><strong>1.</strong> Para comenzar con nuestra receta de brownies de chocolate, vamos a colocar la manteca y el chocolate picados en una sartén, y llevarlos a fuego bien bajo. Lo tapamos y vamos a dejarlo por unos 5 minutos sin tocar.</p>
+                    <p><strong>2.</strong> Ahora retirar del fuego y revolver los ingredientes hasta que esté todo derretido e integrado.</p>
+                    <p><strong>3.</strong> A parte vamos a batir los 2 huevos con el azúcar hasta que queden bien blancos, esto es clave para que el brownie casero quede bien húmedo.</p>
+                    <p><strong>4.</strong> Agregar el chocolate derretido y batir hasta que esté integrado. Sumar las nueces en pedazos grandes o como más les guste.</p>
+                    <p><strong>5.</strong> Sumar el harina 0000 tamizada en dos partes e integrar todo como se ve en el video. Es importante batir fuerte antes de pasar el brownie de chocolate al molde.</p>
+                    <p><strong>6.</strong> Colocar en una placa y cocinar al horno fuerte (200-220°) por 20 minutos.</p>
+                    
+                </div>
+            </div>
+
+            <div class="receta">
+                <h3>Cookies con chips</h3>
+                <div class="detalle">
+                    <p><strong>1.</strong> Precalienta el horno a 180°C y cubre una bandeja de horno con papel pergamino.</p>
+                    <p><strong>2.</strong> En un bol grande, bate la mantequilla con el azúcar blanco y el azúcar moreno hasta obtener una mezcla cremosa y homogénea.</p>
+                    <p><strong>3.</strong> Añade el huevo y la esencia de vainilla, y mezcla bien hasta que todos los ingredientes estén integrados.</p>
+                    <p><strong>4.</strong> En otro bol, tamiza la harina junto con el bicarbonato de sodio y la sal.</p>
+                    <p><strong>5.</strong> Incorpora gradualmente los ingredientes secos a la mezcla de mantequilla, mezclando hasta formar una masa homogénea.</p>
+                    <p><strong>6.</strong> Añade los chips de chocolate y mézclalos bien con la masa.</p>
+                    <p><strong>7.</strong> Forma pequeñas bolitas con la masa y colócalas en la bandeja, dejando espacio entre ellas para que se expandan al hornearse.</p>
+                    <p><strong>8.</strong> Hornea las cookies durante 10 minutos o hasta que los bordes estén dorados.</p>
+                    <p><strong>9.</strong> Deja enfriar las cookies en la bandeja durante unos minutos antes de transferirlas a una rejilla para que se enfríen completamente.</p>
+
+                </div>
+        </div>
+            <div class="receta">
+                <h3>Tiramisú</h3>
+                <div class="detalle">
+                    <p><strong>1.</strong> Prepara el café fuerte y déjalo enfriar. Si deseas, añade el licor al café.</p>
+                    <p><strong>2.</strong> En un bol grande, bate la nata hasta que esté firme.</p>
+                    <p><strong>3.</strong> En otro bol, mezcla el queso mascarpone con el azúcar hasta obtener una crema suave.</p>
+                    <p><strong>4.</strong> Incorpora la nata montada a la mezcla de mascarpone y azúcar, mezclando suavemente hasta obtener una crema homogénea.</p>
+                    <p><strong>5.</strong> Moja rápidamente los bizcochos de soletilla en el café frío, asegurándote de que no se empapen demasiado.</p>
+                    <p><strong>6.</strong> Coloca una capa de bizcochos empapados en el fondo de un molde rectangular.</p>
+                    <p><strong>7.</strong> Cubre los bizcochos con una capa de la crema de mascarpone.</p>
+                    <p><strong>8.</strong> Repite las capas de bizcochos y crema hasta llenar el molde, terminando con una capa de crema.</p>
+                    <p><strong>9.</strong> Espolvorea generosamente cacao en polvo sobre la capa final de crema.</p>
+                    <p><strong>10.</strong> Refrigera el tiramisú durante al menos 2 horas antes de servir, para que los sabores se integren y la textura se asiente.</p>
+                </div>
+            </div>
+
+            <div class="recetas-container">
+            <div class="receta">
+                <h3>Torta vasca</h3>
+                <div class="detalle">
+                    <p><strong>1.</strong> En un bol grande mezclamos el queso crema con los huevos, tratando de no formar grumos. Añadimos el azúcar y seguimos mezclando.</p>
+                    <p><strong>2.</strong> Añadimos una cucharada y media de harina y mezclamos.</p>
+                    <p><strong>3.</strong> Incorporamos poco a poco la nata y mezclamos hasta obtener una mezcla homogénea.</p>
+                    <p><strong>4.</strong> Cubrimos un molde grande con papel vegetal y precalentamos nuestro horno.</p>
+                    <p><strong>5.</strong> Introducimos la tarta en el horno a 210 °C durante 40 minutos, a altura media. Vigila cada 15 minutos para comprobar que el interior esté cremoso y el exterior tostado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto">
+  <h2>Contacto</h2>
+  <div class="contacto-item">
+    <strong>Email:</strong> sweetvee@gmail.com
+  </div>
+  <div class="contacto-item">
+    <strong>Teléfono:</strong> +54 9 11 1354-2763
+  </div>
+  <div class="contacto-item">
+    <strong>Instagram:</strong> @SweetVee
+  </div>
+</section>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("dropdown").classList.toggle("show");
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.menu button')) {
+                var dropdowns = document.getElementsByClassName("menu-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        const recetas = document.querySelectorAll(".receta");
+        recetas.forEach(receta => {
+            receta.addEventListener("click", () => {
+                receta.classList.toggle("open");
+            });
+        });
+    </script>
+</body>
+</html>
